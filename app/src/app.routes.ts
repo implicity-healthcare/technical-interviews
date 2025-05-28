@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
 import { AppLayout } from './app/layout/component/app.layout';
-import { PatientListPage } from './app/pages/patients/patients';
+import pagesRoutes from './app/pages/pages.routes';
 
 export const appRoutes: Routes = [
     {
         path: '',
         component: AppLayout,
         children: [
-            { path: 'patients', component: PatientListPage },
+            ...pagesRoutes
         ]
     },
     { path: '**', redirectTo: '/patients' }

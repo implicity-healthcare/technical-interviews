@@ -65,9 +65,9 @@ export class PatientsService {
 
     getLatestVitalSigns(patientId: string): LatestVitalSignsDto {
         // Generate different vitals each time (no seed for real-time variation)
-        const heartRate = faker.number.int({ min: 60, max: 100 });
-        const systolic = faker.number.int({ min: 110, max: 140 });
-        const diastolic = faker.number.int({ min: 70, max: 90 });
+        const heartRate = faker.number.int({ min: 50, max: 160 });
+        const systolic = faker.number.int({ min: 80, max: 150 });
+        const diastolic = faker.number.int({ min: 70, max: 100 });
         const spO2 = faker.number.int({ min: 95, max: 100 });
         const temperature = faker.number.float({
             min: 36.0,

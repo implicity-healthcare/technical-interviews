@@ -22,11 +22,11 @@
 
 ## Part 2: Focused Coding Challenge (90 minutes)
 ### Objective
-1. Develop a "Single Patient Vital Signs Display" component in Angular. You will fetch data from provided API endpoints, display patient information, their latest vitals, and a historical trend for one vital sign.
+1. Update the patient details modal view to include a "Vital Signs Display".In order to do that create a reusable component PatientVitalDisplayComponent. You will fetch data from provided API endpoints, display patient information, their latest vitals, and a historical trend for one vital sign.
 
-2. Ensure your UI elements (data display sections, labels, values) have a clean, consistent, and professional look. Use simple, well-organized CSS for this. Focus on clarity and readability of the medical data. No complex UI library setup is required unless you are extremely fast with a preferred one (like Angular Material's CDK for basic structure).
+2. Ensure your UI component (data display sections, labels, values) has a clean and consistent look. Focus on clarity and readability of the medical data.
 
-3. You will be working with data for a single, predefined patient (ID: pat123). Showcase how you are able to navigate through the code and request APIs to populate your frontend component.
+
 
 ### Available Endpoints
 **Get Patient Profile**
@@ -77,18 +77,23 @@ JSON
 
 **Angular Application Setup**  
 - Extend the current application following the provided folder architecture
-- Create a feature module and a component (e.g., PatientVitalDisplayComponent).
+- Create a PatientVitalDisplayComponent.
 
 **Data Service**  
-- Create an Angular service to handle fetching data from the three API endpoints.
-Use Angular's HttpClient and RxJS for these asynchronous operations.
+- Use proper angular service to handle fetching data from the three API endpoints.
 
-**PatientVitalDisplayComponent Implementation**
-- On initialization (ngOnInit), use your service to fetch data from all three endpoints.
+### PatientVitalDisplayComponent Implementation
+**UI Proposal**
+![Patient Details Modal](resources/front.drawio.png)
+The above diagram shows the expected layout for the patient details modal with vital signs display.
+
 - Display Patient Profile: Clearly present the patient's name, age, roomNumber, and condition.
-- Display Latest Vitals: Show the latest heartRate, bloodPressure, spO2, and temperature in a structured and readable format. Include units and consider visually indicating the status if time permits.
+- Display Latest Vitals: Show the latest heartRate, bloodPressure, spO2, and temperature in a structured and readable format. Include units and consider visually indicating the status.
+
 - Display Historical Heart Rate: Primary Goal (if time is tight): Display the historical heart rate data as a formatted list (e.g., "Time: [formatted timestamp], HR: [value] bpm").
+
 - Loading & Error States: Implement a simple loading indicator (e.g., "Loading patient data...") while API calls are in progress.
+
 - Display user-friendly error messages if any API call fails (e.g., "Failed to load patient profile.").
 
 **TypeScript**

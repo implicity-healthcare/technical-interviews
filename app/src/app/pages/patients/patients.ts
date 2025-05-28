@@ -123,7 +123,7 @@ interface ExportColumn {
                     </div>
                     <div>
                         <label for="age" class="block font-bold mb-3">Age</label>
-                        <input disabled=true type="number" pInputNumber id="age" [(ngModel)]="patient.age" required fluid />
+                        <input disabled=true type="number" pInputText id="age" [(ngModel)]="patient.age" required fluid style="width: 4rem" />
                     </div>
                     <div>
                         <label for="roomNumber" class="block font-bold mb-3">Room Number</label>

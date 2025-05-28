@@ -31,9 +31,17 @@ export class PatientsController {
             forbidNonWhitelisted: true,
         })
     )
-    getVitalHistory(
+    public async getVitalHistory(
         @Param() params: PatientVitalHistoryQueryParamsDto
-    ): VitalHistoryPointDto[] {
+    ): Promise<VitalHistoryPointDto[]> {
+        // Simulate random delay (0-3 seconds)
+        const delay = Math.random() * 3000;
+        await new Promise(resolve => setTimeout(resolve, delay));
+        
+        // Simulate random errors (20% chance)
+        if (Math.random() <= 0.2) {
+            throw new Error('Simulated server error');
+        }
         return this.patientsService.getVitalHistory(params.patientId, params.vitalType);
     }
 }

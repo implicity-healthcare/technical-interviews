@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { patients } from './patients/patients';
+import { PatientListPage } from './patients/patients';
 
 export default [
-    { path: 'patients', component: patients },
+    { path: 'patients', component: PatientListPage },
 ] as Routes;

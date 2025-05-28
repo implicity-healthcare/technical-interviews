@@ -25,8 +25,8 @@ export class AppMenu {
                 items: [
                     {
                         label: 'Patients',
-                        icon: 'pi pi-fw pi-pencil',
-                        routerLink: ['/pages/crud']
+                        icon: 'pi pi-fw pi-users',
+                        routerLink: ['/patients']
                     },
                 ]
             },
