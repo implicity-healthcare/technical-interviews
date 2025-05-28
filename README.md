@@ -28,7 +28,7 @@
 
 
 
-### Available Endpoints
+### Available Endpoints (described in API as well)
 **Get Patient Profile**
 ```
 Endpoint: GET http://localhost:3007/api/patients/pat123/profile
@@ -90,14 +90,15 @@ The above diagram shows the expected layout for the patient details modal with v
 - Display Patient Profile: Clearly present the patient's name, age, roomNumber, and condition.
 - Display Latest Vitals: Show the latest heartRate, bloodPressure, spO2, and temperature in a structured and readable format. Include units and consider visually indicating the status.
 
-- Display Historical Heart Rate: Primary Goal (if time is tight): Display the historical heart rate data as a formatted list (e.g., "Time: [formatted timestamp], HR: [value] bpm").
+- Display Historical Vitals: Primary Goal (if time is tight): Display the historical as a formatted list (e.g., "Time: [formatted timestamp], HR: [value] bpm").
 
-- Loading & Error States: Implement a simple loading indicator (e.g., "Loading patient data...") while API calls are in progress.
+- Loading & Error States: Implement a simple loading indicator while API calls are in progress.
 
 - Display user-friendly error messages if any API call fails (e.g., "Failed to load patient profile.").
 
 **TypeScript**
 - Define clear TypeScript interfaces for the data structures (Profile, LatestVital, VitalValue, HistoricalDataPoint).
+
 - Use strong typing throughout your component and service.
 
 **Styling (CDS Guideline)**
