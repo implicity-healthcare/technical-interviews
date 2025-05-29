@@ -1,17 +1,9 @@
-# Resource Service
-
-This project is bootstrap quickstart guide to launch new microservice projects.
+# Wildcard API
 
 ## Setup
 
 ```
-npm i
-```
-
-## Run
-
-```
-npm start:dev
+docker run -p 8099:3007 docker.io/sarazinj/mpcty-wildcard
 ```
 
 ## Available Endpoints
