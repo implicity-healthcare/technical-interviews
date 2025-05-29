@@ -3,7 +3,7 @@
 ## Setup
 
 ```
-docker run -p 8099:3007 docker.io/sarazinj/mpcty-wildcard
+docker run -p 3007:3007 docker.io/sarazinj/mpcty-wildcard
 ```
 
 ## Available Endpoints
