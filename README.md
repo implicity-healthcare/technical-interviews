@@ -1,109 +1,34 @@
-# Technical Test for Senior Frontend Developer
-### Total Time: Approximately 120 minutes
-- Briefing & Setup (5 mins)
-- Focused Coding Challenge (90 mins)
-- Code Review & Conceptual Q&A (20-25 min)
+# Gilded Rose Requirements Specification
 
-### Core Skills Assessed
-- Frontend Development (Angular/TypeScript)
-- Data Visualization & UI (simplified)
-- API Integration & Reliability (basics)
+Hi and welcome to team Gilded Rose. As you know, we are a small inn with a prime location in a
+prominent city ran by a friendly innkeeper named Allison. We also buy and sell only the finest goods.
+Unfortunately, our goods are constantly degrading in `Quality` as they approach their sell by date.
 
-### Technologies
-- Frontend: Angular (latest stable or 17+), TypeScript, RxJS
-- CDS Components: Simplified guideline (focus on consistency)
-- Backend API: Provided
+We have a system in place that updates our inventory for us. It was developed by a no-nonsense type named
+Leeroy, who has moved on to new adventures. Your task is to add the new feature to our system so that
+we can begin selling a new category of items. First an introduction to our system:
 
-## Part 1: Briefing & Setup (5 minutes)
-- Quick overview of the test structure.
-- Clarify the objective of the coding challenge.
-- Explain that backend API endpoints is provided 
-- Answer any immediate setup questions.
+- All `items` have a `SellIn` value which denotes the number of days we have to sell the `items`
+- All `items` have a `Quality` value which denotes how valuable the item is
+- At the end of each day our system lowers both values for every item
 
-## Part 2: Focused Coding Challenge (90 minutes)
-### Objective
-1. Update the patient details modal view to include a "Vital Signs Display".In order to do that create a reusable component PatientVitalDisplayComponent. You will fetch data from provided API endpoints, display patient information, their latest vitals, and a historical trend for one vital sign.
+Pretty simple, right? Well this is where it gets interesting:
 
-2. Ensure your UI component (data display sections, labels, values) has a clean and consistent look. Focus on clarity and readability of the medical data.
+- Once the sell by date has passed, `Quality` degrades twice as fast
+- The `Quality` of an item is never negative
+- __"Aged Brie"__ actually increases in `Quality` the older it gets
+- The `Quality` of an item is never more than `50`
+- __"Sulfuras"__, being a legendary item, never has to be sold or decreases in `Quality`
 
+We have recently signed a supplier of conjured items. This requires an update to our system:
 
+- __"Conjured"__ items degrade in `Quality` twice as fast as normal items
 
-### Available Endpoints (described in API as well)
-**Get Patient Profile**
-```
-Endpoint: GET http://localhost:3007/api/patients/pat123/profile
-Expected Response (JSON):
-JSON
+Feel free to make any changes to the `UpdateQuality` method and add any new code as long as everything
+still works correctly. However, do not alter the `Item` class or `Items` property as those belong to the
+goblin in the corner who will insta-rage and one-shot you as he doesn't believe in shared code
+ownership (you can make the `UpdateQuality` method and `Items` property static if you like, we'll cover
+for you).
 
-{
-  "id": "pat123",
-  "name": "Eleanor Vance",
-  "age": 67,
-  "roomNumber": "ICU-305",
-  "condition": "Stable post-op"
-}
-```
-
-**Get Latest Vital Signs**
-```
-Endpoint: GET http://localhost:3007/api/patients/pat123/vitals/latest
-Expected Response (JSON):
-JSON
-
-{
-  "heartRate": { "value": 72, "unit": "bpm", "status": "normal" },
-  "bloodPressure": { "systolic": 125, "diastolic": 82, "unit": "mmHg", "status": "normal" },
-  "spO2": { "value": 97, "unit": "%", "status": "normal" },
-  "temperature": { "value": 37.1, "unit": "°C", "status": "normal" }
-}
-```
-
-**Get Historical Heart Rate**
-```
-Endpoint: GET http://localhost:3007/api/patients/pat123/vitals/HeartRate/history
-Expected Response (JSON):
-JSON
-
-[
-  { "timestamp": "2024-05-28T10:00:00Z", "value": 70 },
-  { "timestamp": "2024-05-28T10:05:00Z", "value": 72 },
-  { "timestamp": "2024-05-28T10:10:00Z", "value": 71 },
-  // ... (approx. 10-15 data points)
-  { "timestamp": "2024-05-28T11:00:00Z", "value": 75 }
-]
-```
-
-### Guidelines
-
-**Angular Application Setup**  
-- Extend the current application following the provided folder architecture
-- Create a PatientVitalDisplayComponent.
-
-**Data Service**  
-- Use proper angular service to handle fetching data from the three API endpoints.
-
-### PatientVitalDisplayComponent Implementation
-**UI Proposal**
-![Patient Details Modal](resources/front.drawio.png)
-The above diagram shows the expected layout for the patient details modal with vital signs display.
-
-- Display Patient Profile: Clearly present the patient's name, age, roomNumber, and condition.
-- Display Latest Vitals: Show the latest heartRate, bloodPressure, spO2, and temperature in a structured and readable format. Include units and consider visually indicating the status.
-
-- Display Historical Vitals: Primary Goal (if time is tight): Display the historical as a formatted list (e.g., "Time: [formatted timestamp], HR: [value] bpm").
-
-- Loading & Error States: Implement a simple loading indicator while API calls are in progress.
-
-- Display user-friendly error messages if any API call fails (e.g., "Failed to load patient profile.").
-
-**TypeScript**
-- Define clear TypeScript interfaces for the data structures (Profile, LatestVital, VitalValue, HistoricalDataPoint).
-
-- Use strong typing throughout your component and service.
-
-**Styling (CDS Guideline)**
-- Apply simple, clean BEM style, SCSS to ensure data is presented clearly and professionally. Focus on readability and visual organization.
-
-### Deliverable
-- Be prepared to share your screen and walk through your code.
-
+Just for clarification, an item can never have its `Quality` increase above `50`, however __"Sulfuras"__ is a
+legendary item and as such its `Quality` is `80` and it never alters.

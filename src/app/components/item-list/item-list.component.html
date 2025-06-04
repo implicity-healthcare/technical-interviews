@@ -1,0 +1,106 @@
+<div class="item-list-container">
+  <div class="header">
+    <h1>🏪 Gilded Rose Inn - Inventory Management</h1>
+    <p class="subtitle">Manage your magical items and watch their quality change over time</p>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-primary" (click)="updateQuality()">
+      ⏰ Update Quality (Next Day)
+    </button>
+    <button class="btn btn-secondary" (click)="toggleAddForm()">
+      {{ showAddForm ? '❌ Cancel' : '➕ Add Item' }}
+    </button>
+    <button class="btn btn-warning" (click)="resetItems()">
+      🔄 Reset to Default
+    </button>
+  </div>
+
+  <div class="add-item-form" *ngIf="showAddForm">
+    <h3>Add New Item</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="itemName">Item Name:</label>
+        <input
+          id="itemName"
+          type="text"
+          [(ngModel)]="newItemName"
+          placeholder="Enter item name"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label for="sellIn">Sell In (days):</label>
+        <input
+          id="sellIn"
+          type="number"
+          [(ngModel)]="newItemSellIn"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label for="quality">Quality:</label>
+        <input
+          id="quality"
+          type="number"
+          [(ngModel)]="newItemQuality"
+          min="0"
+          max="50"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success" (click)="addItem()">Add Item</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="items-table-container">
+    <table class="items-table">
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Sell In</th>
+          <th>Quality</th>
+          <th>Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let item of items; let i = index"
+          [class]="getItemTypeClass(item.name)"
+        >
+          <td class="item-name">{{ item.name }}</td>
+          <td class="sell-in">
+            <span class="value">{{ item.sellIn }}</span>
+            <span class="unit">days</span>
+          </td>
+          <td class="quality">
+            <div class="quality-bar">
+              <div
+                class="quality-fill"
+                [style.width.%]="(item.quality / 50) * 100"
+              ></div>
+              <span class="quality-text">{{ item.quality }}</span>
+            </div>
+          </td>
+          <td class="item-type">
+            <span class="type-badge" [class]="getItemTypeClass(item.name)">
+              {{ getItemTypeDisplay(item.name) }}
+            </span>
+          </td>
+          <td class="actions">
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="removeItem(i)"
+              title="Remove item"
+            >
+              🗑️
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> 
